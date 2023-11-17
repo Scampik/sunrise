@@ -1,29 +1,27 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 function supportsPopover() {
     return HTMLElement.prototype.hasOwnProperty("popover");
 }
 
-const popover = (popoverTag, btnTag, direction) => {
+const popover = (popoverTag: string, btnTag: string, direction: any) => {
     console.log(direction);
     const popover = document.getElementById(popoverTag);
     const toggleBtn = document.getElementById(btnTag);
 
-    // const keyboardHelpPara = document.getElementById("keyboard-help-para");
-
     const popoverSupported = supportsPopover();
 
     if (popoverSupported) {
-    popover.popover = "auto";
-    toggleBtn.popoverTargetElement = popover;
-    toggleBtn.popoverTargetAction = "toggle";
+      (popover as any).popover = "auto";
+      (toggleBtn as any).popoverTargetElement = popover;
+      (toggleBtn as any).popoverTargetAction = "toggle";
     } else {
-    toggleBtn.style.display = "none";
+      toggleBtn.style.display = "none";
     }
 
-    const popravka = {
+    const popravka: { [key: string]: number } = {
         top: 20,
         bottom: -100,
     }
-    // // положение
 
     toggleBtn.addEventListener("click", function() {
         const buttonRect = toggleBtn.getBoundingClientRect();
