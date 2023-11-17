@@ -7,7 +7,7 @@ const popover = (popoverTag, btnTag, direction) => {
     const popover = document.getElementById(popoverTag);
     const toggleBtn = document.getElementById(btnTag);
 
-    const keyboardHelpPara = document.getElementById("keyboard-help-para");
+    // const keyboardHelpPara = document.getElementById("keyboard-help-para");
 
     const popoverSupported = supportsPopover();
 
