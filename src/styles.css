@@ -1,0 +1,51 @@
+html {
+  font-family: sans-serif;
+  /* height: 1000px; */
+}
+
+body {
+  width: 140px;
+}
+
+.divHead {
+  height: 500px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 500px;
+  /* position: fixed; */
+  /* top: 0;
+  left: 0; */
+  /* inset: unset; */
+}
+
+/* :popover-open {
+  position: absolute;
+  inset: unset;
+  bottom: 5px;
+  right: 5px;
+} */
+
+[popover] {
+  position: absolute;
+  /* bottom: 5px; */
+  /* right: 5px; */
+  inset: auto;
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+  border: solid;
+  padding: 0.35em;
+  /* overflow: auto; */
+  color: rgb(197, 17, 17);
+  background-color: Canvas;
+}
+
+footer {
+  display: flex;
+  height: 2000px;
+}
