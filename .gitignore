@@ -4,6 +4,4 @@ node_modules
 dist
 test_results
 coverage
-
-
-
+.idea
