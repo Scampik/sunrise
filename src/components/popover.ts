@@ -1,61 +1,31 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 function supportsPopover() {
-    return HTMLElement.prototype.hasOwnProperty("popover");
+    return Object.prototype.hasOwnProperty.call(HTMLElement.prototype, "popover");
 }
 
-const popover = (popoverTag: string, btnTag: string, direction: any) => {
-    console.log(direction);
-    const popover = document.getElementById(popoverTag);
-    const toggleBtn = document.getElementById(btnTag);
+type Direction = 'top' | 'bottom';
 
+const popover = (popoverNode: HTMLElement, referenceNode: HTMLElement, direction: Direction) => {
     const popoverSupported = supportsPopover();
 
-    if (popoverSupported) {
-      (popover as any).popover = "auto";
-      (toggleBtn as any).popoverTargetElement = popover;
-      (toggleBtn as any).popoverTargetAction = "toggle";
-    } else {
-      toggleBtn.style.display = "none";
+    if (!popoverSupported) {
+      referenceNode.style.display = 'none';
+      return;
     }
 
-    const popravka: { [key: string]: number } = {
-        top: 20,
-        bottom: -100,
-    }
+    popoverNode.popover = "manual";
 
-    toggleBtn.addEventListener("click", function() {
-        const buttonRect = toggleBtn.getBoundingClientRect();
-        const buttonTop = buttonRect.top + popravka[direction] + (640 - buttonRect.top);
-        const buttonLeft = buttonRect.left;
-        // console.log('button', buttonTop);
-        popover.style.position = 'absolute';
-        popover.style.top  = buttonTop + 'px';
-        popover.style.left = buttonLeft + 'px';
-      });
+    referenceNode.addEventListener("click", function() {
+      const buttonRect = referenceNode.getBoundingClientRect();
+      const buttonTop = buttonRect.top + buttonRect.height;
+      const buttonLeft = buttonRect.left;
 
-    window.addEventListener("scroll", function() {
-        // var button = document.getElementById("myButton");
-        const buttonRect = toggleBtn.getBoundingClientRect();
-        // const buttonTop = buttonRect.top - popravka[direction];
-        // const buttonLeft = buttonRect.left;
-        // popover.style.position = 'absolute';
-        // popover.style.top  = buttonTop + 'px';
-        // popover.style.left = buttonLeft + 'px';
-        console.log(buttonRect.bottom);
-        if ((buttonRect.bottom < 130 ) 
-         && (buttonRect.bottom > 120)) {
-          console.log("hello world");
-          const buttonTop = buttonRect.bottom - 290;
-          popover.style.bottom  = buttonTop + 'px';
-        }
-        if ((buttonRect.bottom > 730 ) 
-        && (buttonRect.bottom < 740)) {
-         console.log("hello world");
-         const buttonTop = buttonRect.top + popravka[direction] + (640 - buttonRect.top);
-         popover.style.top  = buttonTop + 'px';
-         popover.style.bottom = null;
-       }
-        
+      // TODO: добавить вызов функции расчета координат
+
+      popoverNode.style.position = 'absolute';
+      popoverNode.style.top  = buttonTop + 'px';
+      popoverNode.style.left = buttonLeft + 'px';
+
+      popoverNode.togglePopover();
     });
 };
 
