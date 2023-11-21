@@ -1,12 +1,11 @@
 import './styles.css';
 import popover from './components/popover';
 
-const popo = () => {
-    // управление поповером
+const tooltip = () => {
     const popoverNode = document.getElementById('mypopover');
-    const referenceNode = document.getElementById('toggleBtn');
+    const referenceNode = document.getElementById('toggleNode');
 
     popover(popoverNode, referenceNode, 'top');
 };
 
-popo();
+tooltip();
