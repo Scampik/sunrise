@@ -1,25 +1,36 @@
 html {
-  font-family: sans-serif;
-  /* height: 1000px; */
-}
+  height: 2000px;
+  width: 2000px;
+ }
 
-body {
-  width: 1400px;
-}
-
-.divHead {
-  height: 500px;
-}
-
-.container {
+ body {
+  height: 2000px;
+  width: 2000px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 1400px;
-  height: 500px;
-}
+  background: linear-gradient(to bottom right, #FF9966, #FF5E62); /* Используйте свои цвета */
+ }
 
-footer {
-  display: flex;
-  height: 2000px;
-}
+ .block-1 {
+  padding: 10px;
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+ }
+
+ .block-2 {
+  margin-top: 200px;
+ }
+
+ .testbox {
+  background-color: #fff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+ }
+

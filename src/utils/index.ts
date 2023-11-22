@@ -22,9 +22,12 @@ const getScrollSize = ():{ scrollTop: number, scrollLeft: number } => {
 
 const computeCoordPlacement = (popoverNode: HTMLElement, referenceNode: HTMLElement, direction: Direction): ClientRectObject => {
     const referenceNodeRect = getCoordsReferenceNode(referenceNode);
+    // const popoverNodeRect = getCoordsReferenceNode(popoverNode);
     const {scrollTop, scrollLeft } = getScrollSize();
     // const { windowHeight, windowWidth } = getWindowSize();
     //window.devicePixelRatio надо как то учесть масштабирование браузера ( ниже 50% съезжает)
+
+    console.log(referenceNodeRect)
 
     let top;
     let left;
@@ -32,26 +35,25 @@ const computeCoordPlacement = (popoverNode: HTMLElement, referenceNode: HTMLElem
     let bottom;
     switch (direction) {
         case 'top':
-            top = referenceNodeRect.top + scrollTop - referenceNodeRect.height;
+            top = referenceNodeRect.top + scrollTop - referenceNodeRect.height - 5;
             bottom = referenceNodeRect.bottom + scrollTop;
             left = referenceNodeRect.left + scrollLeft;
             right = referenceNodeRect.right + scrollLeft;
-            console.log(referenceNodeRect.top, scrollTop, bottom)
             break;
           case 'bottom':
-            top = referenceNodeRect.bottom + scrollTop + referenceNodeRect.height;
+            top = referenceNodeRect.bottom + scrollTop + 5;
             bottom = referenceNodeRect.top + scrollTop;
             left = referenceNodeRect.left + scrollLeft;
             right = referenceNodeRect.right + scrollLeft;
             break;
           case 'left':
-            top = referenceNodeRect.bottom + scrollTop - referenceNodeRect.height/2;
+            top = referenceNodeRect.bottom + scrollTop - referenceNodeRect.height;
             bottom = referenceNodeRect.top + scrollTop;
             left = referenceNodeRect.left + scrollLeft - referenceNodeRect.width - 5;
             right = referenceNodeRect.right + scrollLeft;
             break;
           case 'right':
-            top = referenceNodeRect.bottom + scrollTop - referenceNodeRect.height/2;
+            top = referenceNodeRect.bottom + scrollTop - referenceNodeRect.height;
             bottom = referenceNodeRect.top + scrollTop;
             left = referenceNodeRect.left + scrollLeft + referenceNodeRect.width + 5;
             right = referenceNodeRect.right + scrollLeft;
