@@ -1,71 +1,86 @@
 // функция расчета координат
 import { Direction } from '../components/popover';
-import { ClientRectObject } from './types';
+import { Side } from '../components/popover';
 
+const getScrollSize = () => {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
 
-const getCoordsReferenceNode = (referenceNode: HTMLElement) => {
-    return referenceNode.getBoundingClientRect();
+  return {scrollTop, scrollLeft };
 };
 
-// const getWindowSize = ():{ windowHeight: number, windowWidth: number } => {
-//     const windowHeight = window.document.documentElement.clientHeight;
-//     const windowWidth = window.document.documentElement.clientWidth;
-//     return { windowHeight, windowWidth };
-// };
+const getSizeTooltip = (popoverNode: HTMLElement) => {
+  const tooltip = document.createElement("div");
+  tooltip.style.visibility = "hidden";
+  tooltip.innerHTML = popoverNode.textContent;
 
-const getScrollSize = ():{ scrollTop: number, scrollLeft: number } => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+  document.body.appendChild(tooltip);
 
-    return {scrollTop, scrollLeft };
+  const tooltipHeight = tooltip.offsetHeight;
+  const tooltipWidth = tooltip.offsetWidth;
+
+  document.body.removeChild(tooltip);
+
+  return { tooltipHeight, tooltipWidth };
+}
+
+const computeCoordPlacement = (popoverNode: HTMLElement, referenceNode: HTMLElement, direction: Direction, side: Side) => {
+  const referenceNodeRect = referenceNode.getBoundingClientRect();
+  const {scrollTop, scrollLeft } = getScrollSize();
+  const { tooltipHeight, tooltipWidth } = getSizeTooltip(popoverNode);
+  
+  
+  const currentSideX = {
+    left: referenceNodeRect.left + scrollLeft,
+    right: referenceNodeRect.right + scrollLeft - tooltipWidth,
+    mid: referenceNodeRect.left + scrollLeft + tooltipWidth/2,
+  }
+  
+  const currentSideY = {
+    left: referenceNodeRect.bottom + scrollTop - tooltipHeight,
+    right: referenceNodeRect.top + scrollTop,
+    mid: referenceNodeRect.top + scrollLeft + tooltipHeight/2,
+  }
+  // console.log(currentSide[side]);
+  
+  switch (direction) {
+      case 'top':
+        return {
+          y: referenceNodeRect.top + scrollTop - tooltipHeight - 5,
+          x: currentSideX[side],
+          width: tooltipWidth,
+          height: tooltipHeight,
+        }
+      case 'bottom':
+        return {
+          y: referenceNodeRect.bottom + scrollTop + 5,
+          x: currentSideX[side],
+          width: tooltipWidth,
+          height: tooltipHeight,
+        }
+      case 'left':
+        return {
+          y: currentSideY[side],
+          x: referenceNodeRect.right + scrollLeft - referenceNodeRect.width - tooltipWidth - 5,
+          width: tooltipWidth,
+          height: tooltipHeight,
+        }
+      case 'right':
+        return {
+          y: currentSideY[side],
+          x: referenceNodeRect.left + scrollLeft + referenceNodeRect.width + 5,
+          width: tooltipWidth,
+          height: tooltipHeight,
+        }
+      default:
+        return {
+          y: referenceNodeRect.top + scrollTop - tooltipHeight - 5,
+          x: referenceNodeRect.left + scrollLeft,
+          width: tooltipWidth,
+          height: tooltipHeight,
+        };
+  }
 };
 
-const computeCoordPlacement = (popoverNode: HTMLElement, referenceNode: HTMLElement, direction: Direction): ClientRectObject => {
-    const referenceNodeRect = getCoordsReferenceNode(referenceNode);
-    // const popoverNodeRect = getCoordsReferenceNode(popoverNode);
-    const {scrollTop, scrollLeft } = getScrollSize();
-    // const { windowHeight, windowWidth } = getWindowSize();
-    //window.devicePixelRatio надо как то учесть масштабирование браузера ( ниже 50% съезжает)
 
-    console.log(referenceNodeRect)
-
-    let top;
-    let left;
-    let right;
-    let bottom;
-    switch (direction) {
-        case 'top':
-            top = referenceNodeRect.top + scrollTop - referenceNodeRect.height - 5;
-            bottom = referenceNodeRect.bottom + scrollTop;
-            left = referenceNodeRect.left + scrollLeft;
-            right = referenceNodeRect.right + scrollLeft;
-            break;
-          case 'bottom':
-            top = referenceNodeRect.bottom + scrollTop + 5;
-            bottom = referenceNodeRect.top + scrollTop;
-            left = referenceNodeRect.left + scrollLeft;
-            right = referenceNodeRect.right + scrollLeft;
-            break;
-          case 'left':
-            top = referenceNodeRect.bottom + scrollTop - referenceNodeRect.height;
-            bottom = referenceNodeRect.top + scrollTop;
-            left = referenceNodeRect.left + scrollLeft - referenceNodeRect.width - 5;
-            right = referenceNodeRect.right + scrollLeft;
-            break;
-          case 'right':
-            top = referenceNodeRect.bottom + scrollTop - referenceNodeRect.height;
-            bottom = referenceNodeRect.top + scrollTop;
-            left = referenceNodeRect.left + scrollLeft + referenceNodeRect.width + 5;
-            right = referenceNodeRect.right + scrollLeft;
-            break;
-          default:
-            top = referenceNodeRect.top + scrollTop - referenceNodeRect.height;
-            bottom = referenceNodeRect.bottom + scrollTop;
-            left = referenceNodeRect.left + scrollLeft;
-    }
-
-    return { top, left, right, bottom};
-};
-
-
-export { getCoordsReferenceNode, computeCoordPlacement };
+export { computeCoordPlacement };
