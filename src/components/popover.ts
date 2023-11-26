@@ -20,10 +20,9 @@ const popover = (popoverNode: HTMLElement, referenceNode: HTMLElement, direction
       const { y, x, width, height } = computeCoordPlacement(popoverNode, referenceNode, direction, side);
       
       popoverNode.style.position = 'absolute';
-      popoverNode.style.top = y + 'px';
-      popoverNode.style.left = x + 'px';
-      popoverNode.style.height = height + 'px';
-      popoverNode.style.width = width + 'px';
+      popoverNode.style.transform = `translate(${x}px, ${y}px)`;
+      popoverNode.style.height = `${height}px`;
+      popoverNode.style.width = `${width}px`;
       popoverNode.style.border = '0';
       popoverNode.style.padding = '0';
       popoverNode.style.margin = '0';
