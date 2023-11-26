@@ -39,21 +39,22 @@ const computeCoordPlacement = (popoverNode: HTMLElement, referenceNode: HTMLElem
   const currentSideY = {
     left: referenceNodeRect.bottom + scrollTop - tooltipHeight,
     right: referenceNodeRect.top + scrollTop,
-    mid: referenceNodeRect.top + scrollLeft + tooltipHeight/2,
+    mid: referenceNodeRect.bottom + scrollTop - referenceNodeRect.height/2 - tooltipHeight/2,
   }
-  // console.log(currentSide[side]);
+
+  const BORDER_SPACE = 5;
   
   switch (direction) {
       case 'top':
         return {
-          y: referenceNodeRect.top + scrollTop - tooltipHeight - 5,
+          y: referenceNodeRect.top + scrollTop - tooltipHeight - BORDER_SPACE,
           x: currentSideX[side],
           width: tooltipWidth,
           height: tooltipHeight,
         }
       case 'bottom':
         return {
-          y: referenceNodeRect.bottom + scrollTop + 5,
+          y: referenceNodeRect.bottom + scrollTop + BORDER_SPACE,
           x: currentSideX[side],
           width: tooltipWidth,
           height: tooltipHeight,
@@ -61,21 +62,21 @@ const computeCoordPlacement = (popoverNode: HTMLElement, referenceNode: HTMLElem
       case 'left':
         return {
           y: currentSideY[side],
-          x: referenceNodeRect.right + scrollLeft - referenceNodeRect.width - tooltipWidth - 5,
+          x: referenceNodeRect.right + scrollLeft - referenceNodeRect.width - tooltipWidth - BORDER_SPACE,
           width: tooltipWidth,
           height: tooltipHeight,
         }
       case 'right':
         return {
           y: currentSideY[side],
-          x: referenceNodeRect.left + scrollLeft + referenceNodeRect.width + 5,
+          x: referenceNodeRect.left + scrollLeft + referenceNodeRect.width + BORDER_SPACE,
           width: tooltipWidth,
           height: tooltipHeight,
         }
       default:
         return {
-          y: referenceNodeRect.top + scrollTop - tooltipHeight - 5,
-          x: referenceNodeRect.left + scrollLeft,
+          y: referenceNodeRect.top + scrollTop - tooltipHeight - BORDER_SPACE,
+          x: currentSideX[side],
           width: tooltipWidth,
           height: tooltipHeight,
         };
