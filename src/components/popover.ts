@@ -16,7 +16,7 @@ const popover = (popoverNode: HTMLElement, referenceNode: HTMLElement, direction
     }
     popoverNode.popover = "auto"; //manual
 
-    referenceNode.addEventListener("mouseover", () => { //mouseover
+    // referenceNode.addEventListener("mouseover", () => {
       const { y, x, width, height } = computeCoordPlacement(popoverNode, referenceNode, direction, side);
       
       popoverNode.style.position = 'absolute';
@@ -28,12 +28,12 @@ const popover = (popoverNode: HTMLElement, referenceNode: HTMLElement, direction
       popoverNode.style.margin = '0';
       
       popoverNode.togglePopover();
-    });
+    // });
 
 
-    referenceNode.addEventListener("mouseout", function() {
-      popoverNode.togglePopover();
-    });
+    // referenceNode.addEventListener("mouseout", function() {
+    //   popoverNode.togglePopover();
+    // });
 };
 
 export default popover;
