@@ -31,7 +31,7 @@ const tooltip = () => {
     button11.addEventListener("click", () => popover(popoverNode, referenceNode, "bottom", "mid"));
     button12.addEventListener("click", () => popover(popoverNode, referenceNode, "bottom", "right"));
 
-    popover(popoverNode, referenceNode, "left", "left");
+    popover(popoverNode, referenceNode, "top", "mid");
 };
 
 tooltip();

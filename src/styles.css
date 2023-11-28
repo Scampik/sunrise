@@ -50,10 +50,15 @@ html {
   width: 150px;
   background-color: #fff;
   color: #333;
-  margin: 0;
-  padding: 0;
+  margin: 10px;
+  padding: 10px;
   border: none;
   font-size: 18px;
   cursor: pointer;
  }
+
+#mypopover {
+  margin: 0;
+  padding: 10px;
+}
 

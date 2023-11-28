@@ -24,8 +24,6 @@ const popover = (popoverNode: HTMLElement, referenceNode: HTMLElement, direction
       popoverNode.style.height = `${height}px`;
       popoverNode.style.width = `${width}px`;
       popoverNode.style.border = '0';
-      popoverNode.style.padding = '0';
-      popoverNode.style.margin = '0';
       
       popoverNode.togglePopover();
     // });
