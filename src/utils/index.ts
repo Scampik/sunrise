@@ -12,11 +12,10 @@ const getScrollSize = () => {
 const getSizeTooltip = (popoverNode: HTMLElement) => {
   const tooltip = document.createElement("div");
   tooltip.style.visibility = "hidden";
-  tooltip.innerHTML = popoverNode.textContent;
+  tooltip.innerHTML = popoverNode.innerHTML;
 
   document.body.appendChild(tooltip);
   const styles = window.getComputedStyle(tooltip);
-  console.log(styles.width);
   const tooltipHeight = tooltip.offsetHeight;
   const tooltipWidth = tooltip.offsetWidth;
 
