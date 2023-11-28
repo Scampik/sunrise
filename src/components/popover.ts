@@ -23,7 +23,6 @@ const popover = (popoverNode: HTMLElement, referenceNode: HTMLElement, direction
       popoverNode.style.transform = `translate(${x}px, ${y}px)`;
       popoverNode.style.height = `${height}px`;
       popoverNode.style.width = `${width}px`;
-      popoverNode.style.border = '0';
       
       popoverNode.togglePopover();
     // });

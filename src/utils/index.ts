@@ -26,36 +26,41 @@ const getSizeTooltip = (popoverNode: HTMLElement) => {
 
 const getParamsCSS = (popoverNode: HTMLElement, direction: Direction) => {
   const stylesCSS = window.getComputedStyle(popoverNode);
-  const top = parseFloat(stylesCSS.paddingTop);
-  const left = parseFloat(stylesCSS.paddingLeft);
-  const right = parseFloat(stylesCSS.paddingRight);
-  const base = parseFloat(stylesCSS.padding);
+
+  const padTop = parseFloat(stylesCSS.paddingTop);
+  const padLeft = parseFloat(stylesCSS.paddingLeft);
+  const padRight = parseFloat(stylesCSS.paddingRight);
+  const padBase = parseFloat(stylesCSS.padding);
+  const borderTop = parseFloat(stylesCSS.borderTop);
+  const borderLeft = parseFloat(stylesCSS.borderLeft);
+  const borderRight = parseFloat(stylesCSS.borderRight);
+  const borderBase = parseFloat(stylesCSS.border);
 
   switch (direction) {
     case 'top':
       return {
-        paddingY: base + top,
-        paddingX: left + right,
+        styleY: padBase + padTop + borderBase + borderTop,
+        styleX: padLeft + padRight + borderLeft + borderRight,
       }
       case 'bottom':
         return {
-          paddingY: base + top,
-          paddingX: base + left,
+          styleY: padBase + padTop + borderBase + borderTop,
+          styleX: padBase + padLeft + borderBase + borderRight,
         }
         case 'left':
         return {
-          paddingY: base + top,
-          paddingX: left + right,
+          styleY: padBase + padTop + borderBase + borderTop,
+          styleX: padLeft + padRight + borderLeft + borderRight,
         }
       case 'right':
         return {
-          paddingY: base + top,
-          paddingX: base + right - left,
+          styleY: padBase + padTop + borderBase + borderTop,
+          styleX: padBase + padRight - padLeft + borderBase - borderLeft + borderRight,
         }
       default:
         return {
-          paddingY: base,
-          paddingX: base,
+          styleY: padBase,
+          styleX: padBase,
         };
   }
 }
@@ -64,17 +69,17 @@ const computeCoordPlacement = (popoverNode: HTMLElement, referenceNode: HTMLElem
   const referenceNodeRect = referenceNode.getBoundingClientRect();
   const { scrollTop, scrollLeft } = getScrollSize();
   const { tooltipHeight, tooltipWidth } = getSizeTooltip(popoverNode);
-  const { paddingY, paddingX } = getParamsCSS(popoverNode, direction);
+  const { styleY, styleX } = getParamsCSS(popoverNode, direction);
 
   const currentSideX = {
     left: referenceNodeRect.left + scrollLeft,
-    mid: referenceNodeRect.left + scrollLeft + referenceNodeRect.width/2 - tooltipWidth/2 - paddingX/2,
-    right: referenceNodeRect.right + scrollLeft - tooltipWidth - paddingX,
+    mid: referenceNodeRect.left + scrollLeft + referenceNodeRect.width/2 - tooltipWidth/2 - styleX/2,
+    right: referenceNodeRect.right + scrollLeft - tooltipWidth - styleX,
   }
   
   const currentSideY = {
-    left: referenceNodeRect.bottom + scrollTop - tooltipHeight - paddingY,
-    mid: referenceNodeRect.bottom + scrollTop - referenceNodeRect.height/2 - tooltipHeight/2 - paddingY/2,
+    left: referenceNodeRect.bottom + scrollTop - tooltipHeight - styleY,
+    mid: referenceNodeRect.bottom + scrollTop - referenceNodeRect.height/2 - tooltipHeight/2 - styleY/2,
     right: referenceNodeRect.top + scrollTop, 
   }
 
@@ -82,7 +87,7 @@ const computeCoordPlacement = (popoverNode: HTMLElement, referenceNode: HTMLElem
   switch (direction) {
     case 'top':
       return {
-        y: referenceNodeRect.top + scrollTop - tooltipHeight - BORDER_SPACE - paddingY,
+        y: referenceNodeRect.top + scrollTop - tooltipHeight - BORDER_SPACE - styleY,
         x: currentSideX[side],
         width: tooltipWidth,
         height: tooltipHeight,
@@ -97,7 +102,7 @@ const computeCoordPlacement = (popoverNode: HTMLElement, referenceNode: HTMLElem
         case 'left':
         return {
           y: currentSideY[side],
-          x: referenceNodeRect.right + scrollLeft - referenceNodeRect.width - tooltipWidth - BORDER_SPACE - paddingX,
+          x: referenceNodeRect.right + scrollLeft - referenceNodeRect.width - tooltipWidth - BORDER_SPACE - styleX,
           width: tooltipWidth,
           height: tooltipHeight,
         }
