@@ -15,7 +15,7 @@ const popover = (popoverNode: HTMLElement, referenceNode: HTMLElement, direction
       referenceNode.style.display = 'none';
       return; 
     }
-    popoverNode.popover = "auto"; //manual
+    popoverNode.popover = "manual";
 
     const { y, x } = computeCoordPlacement(popoverNode, referenceNode, direction, side);
     popoverNode.style.position = 'absolute';
@@ -29,7 +29,6 @@ const popover = (popoverNode: HTMLElement, referenceNode: HTMLElement, direction
     referenceNode.addEventListener("mouseout", function() {
       popoverNode.togglePopover();
     });
-    // popover(popoverNode, referenceNode, direction, side);
 };
 
 export default popover;
