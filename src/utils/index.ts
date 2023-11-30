@@ -89,37 +89,27 @@ const computeCoordPlacement = (popoverNode: HTMLElement, referenceNode: HTMLElem
       return {
         y: referenceNodeRect.top + scrollTop - tooltipHeight - BORDER_SPACE - styleY,
         x: currentSideX[side],
-        width: tooltipWidth,
-        height: tooltipHeight,
       }
-      case 'bottom':
-        return {
-          y: referenceNodeRect.bottom + scrollTop + BORDER_SPACE,
-          x: currentSideX[side],
-          width: tooltipWidth,
-          height: tooltipHeight,
-        }
-        case 'left':
-        return {
-          y: currentSideY[side],
-          x: referenceNodeRect.right + scrollLeft - referenceNodeRect.width - tooltipWidth - BORDER_SPACE - styleX,
-          width: tooltipWidth,
-          height: tooltipHeight,
-        }
-      case 'right':
-        return {
-          y: currentSideY[side],
-          x: referenceNodeRect.left + scrollLeft + referenceNodeRect.width + BORDER_SPACE,
-          width: tooltipWidth,
-          height: tooltipHeight,
-        }
-      default:
-        return {
-          y: currentSideY[side],
-          x: referenceNodeRect.right + scrollLeft - referenceNodeRect.width - tooltipWidth - BORDER_SPACE ,
-          width: tooltipWidth,
-          height: tooltipHeight,
-        };
+    case 'bottom':
+      return {
+        y: referenceNodeRect.bottom + scrollTop + BORDER_SPACE,
+        x: currentSideX[side],
+      }
+      case 'left':
+      return {
+        y: currentSideY[side],
+        x: referenceNodeRect.right + scrollLeft - referenceNodeRect.width - tooltipWidth - BORDER_SPACE - styleX,
+      }
+    case 'right':
+      return {
+        y: currentSideY[side],
+        x: referenceNodeRect.left + scrollLeft + referenceNodeRect.width + BORDER_SPACE,
+      }
+    default:
+      return {
+        y: currentSideY[side],
+        x: referenceNodeRect.right + scrollLeft - referenceNodeRect.width - tooltipWidth - BORDER_SPACE ,
+      };
   }
 };
 

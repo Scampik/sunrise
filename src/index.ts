@@ -1,5 +1,6 @@
 import './styles.css';
 import popover from './components/popover';
+import { computeCoordPlacement } from './utils/index';
 
 const tooltip = () => {
     const button1 = document.getElementById('button1');
@@ -18,18 +19,66 @@ const tooltip = () => {
     const popoverNode = document.getElementById('mypopover');
     const referenceNode = document.getElementById('toggleNode');
   
-    button1.addEventListener("click", () => popover(popoverNode, referenceNode, "top", "left"));
-    button2.addEventListener("click", () => popover(popoverNode, referenceNode, "top", "mid"));
-    button3.addEventListener("click", () => popover(popoverNode, referenceNode, "top", "right"));
-    button4.addEventListener("click", () => popover(popoverNode, referenceNode, "left", "right"));
-    button5.addEventListener("click", () => popover(popoverNode, referenceNode, "left", "mid"));
-    button6.addEventListener("click", () => popover(popoverNode, referenceNode, "left", "left"));
-    button7.addEventListener("click", () => popover(popoverNode, referenceNode, "right", "right"));
-    button8.addEventListener("click", () => popover(popoverNode, referenceNode, "right", "mid"));
-    button9.addEventListener("click", () => popover(popoverNode, referenceNode, "right", "left"));
-    button10.addEventListener("click", () => popover(popoverNode, referenceNode, "bottom", "left"));
-    button11.addEventListener("click", () => popover(popoverNode, referenceNode, "bottom", "mid"));
-    button12.addEventListener("click", () => popover(popoverNode, referenceNode, "bottom", "right"));
+    button1.addEventListener("click", () => {
+        const { y, x } = computeCoordPlacement(popoverNode, referenceNode, 'top', 'left');
+
+        popoverNode.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    button2.addEventListener("click", () => {
+        const { y, x } = computeCoordPlacement(popoverNode, referenceNode, 'top', 'mid');
+
+        popoverNode.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    button3.addEventListener("click", () => {
+        const { y, x } = computeCoordPlacement(popoverNode, referenceNode, 'top', 'right');
+
+        popoverNode.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    button4.addEventListener("click", () => {
+        const { y, x } = computeCoordPlacement(popoverNode, referenceNode, 'left', 'right');
+
+        popoverNode.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    button5.addEventListener("click", () => {
+        const { y, x } = computeCoordPlacement(popoverNode, referenceNode, 'left', 'mid');
+
+        popoverNode.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    button6.addEventListener("click", () => {
+        const { y, x } = computeCoordPlacement(popoverNode, referenceNode, 'left', 'left');
+
+        popoverNode.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    button7.addEventListener("click", () => {
+        const { y, x } = computeCoordPlacement(popoverNode, referenceNode, 'right', 'right');
+
+        popoverNode.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    button8.addEventListener("click", () => {
+        const { y, x } = computeCoordPlacement(popoverNode, referenceNode, 'right', 'mid');
+
+        popoverNode.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    button9.addEventListener("click", () => {
+        const { y, x } = computeCoordPlacement(popoverNode, referenceNode, 'right', 'left');
+
+        popoverNode.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    button10.addEventListener("click", () => {
+        const { y, x } = computeCoordPlacement(popoverNode, referenceNode, 'bottom', 'left');
+
+        popoverNode.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    button11.addEventListener("click", () => {
+        const { y, x } = computeCoordPlacement(popoverNode, referenceNode, 'bottom', 'mid');
+
+        popoverNode.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    button12.addEventListener("click", () => {
+        const { y, x } = computeCoordPlacement(popoverNode, referenceNode, 'bottom', 'right');
+
+        popoverNode.style.transform = `translate(${x}px, ${y}px)`;
+    });
 
     popover(popoverNode, referenceNode, "top", "mid");
 };
