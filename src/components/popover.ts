@@ -1,4 +1,4 @@
-import { computeCoordPlacement } from '../utils/index';
+import { sunrise } from '../utils/index';
 
 function supportsPopover() {
     return Object.prototype.hasOwnProperty.call(HTMLElement.prototype, "popover");
@@ -8,27 +8,25 @@ export type Direction = 'top' | 'bottom' | 'left' | 'right';
 export type Side = 'mid' | 'left' | 'right';
 
 const popover = (popoverNode: HTMLElement, referenceNode: HTMLElement, direction: Direction = 'top', side: Side = 'mid') => {
-  console.log('ppopover', direction, side);
   const popoverSupported = supportsPopover();
 
-    if (!popoverSupported) {
-      referenceNode.style.display = 'none';
-      return; 
-    }
-    popoverNode.popover = "manual";
+  if (!popoverSupported) {
+    referenceNode.style.display = 'none';
+    return; 
+  }
+  popoverNode.popover = "manual";
 
-    const { y, x } = computeCoordPlacement(popoverNode, referenceNode, direction, side);
-    popoverNode.style.position = 'absolute';
-    popoverNode.style.transform = `translate(${x}px, ${y}px)`;
+  popoverNode.style.position = 'absolute';
+  sunrise(popoverNode, referenceNode, direction, side);
 
-    referenceNode.addEventListener("mouseover", () => {
-      popoverNode.togglePopover();
-    });
+  referenceNode.addEventListener("mouseover", () => {
+    popoverNode.togglePopover();
+  });
 
 
-    referenceNode.addEventListener("mouseout", function() {
-      popoverNode.togglePopover();
-    });
+  referenceNode.addEventListener("mouseout", () => {
+    popoverNode.togglePopover();
+  });
 };
 
 export default popover;
