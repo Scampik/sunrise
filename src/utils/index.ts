@@ -1,5 +1,4 @@
-import { Direction } from '../components/popover';
-import { Side } from '../components/popover';
+import { Direction, Side } from '../components/popover';
 
 const getScrollSize = () => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -8,7 +7,7 @@ const getScrollSize = () => {
   return {scrollTop, scrollLeft };
 };
 
-const computeCoordPlacement = (popoverNode: HTMLElement, referenceNode: HTMLElement, direction: Direction, side: Side) => {
+const computeCoordPlacement = (referenceNode: HTMLElement, direction: Direction, side: Side) => {
   const referenceNodeRect = referenceNode.getBoundingClientRect();
   const { scrollTop, scrollLeft } = getScrollSize();
 
@@ -24,32 +23,30 @@ const computeCoordPlacement = (popoverNode: HTMLElement, referenceNode: HTMLElem
     right: referenceNodeRect.top + scrollTop,
   }
 
-  const BORDER_SPACE = 5;
-
   switch (direction) {
     case 'top':
       return {
         x: currentSideX[side],
-        y: referenceNodeRect.top + scrollTop - BORDER_SPACE,
+        y: referenceNodeRect.top + scrollTop,
       }
     case 'bottom':
       return {
         x: currentSideX[side],
-        y: referenceNodeRect.bottom + scrollTop + BORDER_SPACE,
+        y: referenceNodeRect.bottom + scrollTop,
       }
     case 'left':
       return {
-        x: referenceNodeRect.right + scrollLeft - referenceNodeRect.width - BORDER_SPACE,
+        x: referenceNodeRect.right + scrollLeft - referenceNodeRect.width,
         y: currentSideY[side],
       }
     case 'right':
       return {
-        x: referenceNodeRect.left + scrollLeft + referenceNodeRect.width + BORDER_SPACE,
+        x: referenceNodeRect.left + scrollLeft + referenceNodeRect.width,
         y: currentSideY[side],
       }
     default:
       return {
-        x: referenceNodeRect.right + scrollLeft - referenceNodeRect.width - BORDER_SPACE ,
+        x: referenceNodeRect.right + scrollLeft - referenceNodeRect.width,
         y: currentSideY[side],
       };
   }
@@ -83,7 +80,7 @@ const computeCorrectionCSS = (x: number,y: number, direction: Direction, side: S
 };
 
 const sunrise = (popoverNode: HTMLElement, referenceNode: HTMLElement, direction: Direction, side: Side) => {
-  const { x, y } = computeCoordPlacement(popoverNode, referenceNode, direction, side);
+  const { x, y } = computeCoordPlacement(referenceNode, direction, side);
   const result = computeCorrectionCSS( x, y, direction, side);
   popoverNode.style.transform = result;
 };
