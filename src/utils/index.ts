@@ -95,8 +95,7 @@ const sunrise = (
   side: Side,
 ) => {
   const { x, y } = computeCoordPlacement(referenceNode, direction, side);
-  const result = computeCorrectionCSS(x, y, direction, side);
-  popoverNode.style.transform = result;
+  popoverNode.style.transform = computeCorrectionCSS(x, y, direction, side);
 };
 
 export { computeCoordPlacement, computeCorrectionCSS, sunrise };
