@@ -1,4 +1,4 @@
-import { Direction, Side } from '../components/popover';
+import { Direction, Side } from '../types';
 
 const getScrollSize = () => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -91,8 +91,8 @@ const computeCorrectionCSS = (
 const sunrise = (
   popoverNode: HTMLElement,
   referenceNode: HTMLElement,
-  direction: Direction,
-  side: Side,
+  direction: Direction = 'bottom',
+  side: Side = 'mid',
 ) => {
   const { x, y } = computeCoordPlacement(referenceNode, direction, side);
   popoverNode.style.transform = computeCorrectionCSS(x, y, direction, side);

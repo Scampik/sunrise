@@ -1,37 +1,34 @@
-import './styles.css';
-import popover, { Direction, Side } from './components/popover';
 import { sunrise } from './utils';
+import { Direction, Side } from './types';
 
-const directions: Direction[] = ['top', 'left', 'right', 'bottom'];
-const sides: Side[] = ['left', 'mid', 'right'];
+function supportsPopover() {
+  return Object.prototype.hasOwnProperty.call(HTMLElement.prototype, 'popover');
+}
 
-const buttons: Array<[Direction, Side]> = directions.flatMap(
-  (direction): Array<[Direction, Side]> => {
-    return sides.map((side): [Direction, Side] => [direction, side]);
-  },
-);
+const index = (
+  popoverNode: HTMLElement,
+  referenceNode: HTMLElement,
+  direction: Direction = 'top',
+  side: Side = 'mid',
+) => {
+  const popoverSupported = supportsPopover();
 
-const tooltip = () => {
-  const popoverNode = document.getElementById('mypopover');
-  const referenceNode = document.getElementById('toggleNode');
-
-  if (!popoverNode || !referenceNode) {
+  if (!popoverSupported) {
+    referenceNode.style.display = 'none';
     return;
   }
+  popoverNode.popover = 'manual';
 
-  buttons.forEach(([direction, side], index) => {
-    const node = document.getElementById(`button${index + 1}`);
+  popoverNode.style.position = 'absolute';
+  sunrise(popoverNode, referenceNode, direction, side);
 
-    if (!node) {
-      return;
-    }
-
-    node.addEventListener('click', () => {
-      sunrise(popoverNode, referenceNode, direction, side);
-    });
+  referenceNode.addEventListener('mouseover', () => {
+    popoverNode.togglePopover();
   });
 
-  popover(popoverNode, referenceNode);
+  referenceNode.addEventListener('mouseout', () => {
+    popoverNode.togglePopover();
+  });
 };
 
-tooltip();
+export default index;
