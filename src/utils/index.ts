@@ -1,4 +1,4 @@
-import { Direction, Side } from "../components/popover";
+import { Direction, Side } from '../components/popover';
 
 const getScrollSize = () => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -28,22 +28,22 @@ const computeCoordPlacement = (
   };
 
   switch (direction) {
-    case "top":
+    case 'top':
       return {
         x: currentSideX[side],
         y: referenceNodeRect.top + scrollTop,
       };
-    case "bottom":
+    case 'bottom':
       return {
         x: currentSideX[side],
         y: referenceNodeRect.bottom + scrollTop,
       };
-    case "left":
+    case 'left':
       return {
         x: referenceNodeRect.right + scrollLeft - referenceNodeRect.width,
         y: currentSideY[side],
       };
-    case "right":
+    case 'right':
       return {
         x: referenceNodeRect.left + scrollLeft + referenceNodeRect.width,
         y: currentSideY[side],
@@ -75,13 +75,13 @@ const computeCorrectionCSS = (
   };
 
   switch (direction) {
-    case "top":
+    case 'top':
       return `translate(calc(${x}px - ${currentSideX[side]}%), calc(${y}px - 100%))`;
-    case "bottom":
+    case 'bottom':
       return `translate(calc(${x}px - ${currentSideX[side]}%), calc(${y}px))`;
-    case "left":
+    case 'left':
       return `translate(calc(${x}px - 100%), calc(${y}px - ${currentSideY[side]}%))`;
-    case "right":
+    case 'right':
       return `translate(calc(${x}px), calc(${y}px - ${currentSideY[side]}%))`;
     default:
       return `translate(calc(${x}px - ${currentSideX[side]}%), calc(${y}px - 100%))`;

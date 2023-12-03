@@ -1,9 +1,9 @@
-import "./styles.css";
-import popover, { Direction, Side } from "./components/popover";
-import { sunrise } from "./utils";
+import './styles.css';
+import popover, { Direction, Side } from './components/popover';
+import { sunrise } from './utils';
 
-const directions: Direction[] = ["top", "left", "right", "bottom"];
-const sides: Side[] = ["left", "mid", "right"];
+const directions: Direction[] = ['top', 'left', 'right', 'bottom'];
+const sides: Side[] = ['left', 'mid', 'right'];
 
 const buttons: Array<[Direction, Side]> = directions.flatMap(
   (direction): Array<[Direction, Side]> => {
@@ -12,8 +12,8 @@ const buttons: Array<[Direction, Side]> = directions.flatMap(
 );
 
 const tooltip = () => {
-  const popoverNode = document.getElementById("mypopover");
-  const referenceNode = document.getElementById("toggleNode");
+  const popoverNode = document.getElementById('mypopover');
+  const referenceNode = document.getElementById('toggleNode');
 
   if (!popoverNode || !referenceNode) {
     return;
@@ -26,7 +26,7 @@ const tooltip = () => {
       return;
     }
 
-    node.addEventListener("click", () => {
+    node.addEventListener('click', () => {
       sunrise(popoverNode, referenceNode, direction, side);
     });
   });
