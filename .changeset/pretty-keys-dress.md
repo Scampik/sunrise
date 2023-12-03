@@ -1,5 +1,5 @@
 ---
-'sunrise': minor
+'@sunrise/core': minor
 ---
 
 Popover with placement
