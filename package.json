@@ -1,5 +1,5 @@
 {
-  "name": "sunrise",
+  "name": "@sunrise/core",
   "version": "0.0.1",
   "description": "A lightweight popover/tooltip library with the use of Popover API",
   "main": "dist/index.mjs",
@@ -9,7 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx tsc && npx eslint .",
     "build": "npm run clean && npx tsup src --format esm --dts",
-    "clean": "rm -rf ./dist"
+    "clean": "rm -rf ./dist",
+    "release": "npm run build && npx changeset publish"
   },
   "author": "geophyzik",
   "license": "MIT",
