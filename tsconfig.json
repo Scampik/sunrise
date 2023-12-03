@@ -9,7 +9,9 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "strict": true,
-    "declaration": true
+    "declaration": true,
+    "noEmit": true,
+    "lib": ["es2019", "dom"],
   },
-  "files": ["src/index.ts"]
+  "files": ["src/index.ts"],
 }
