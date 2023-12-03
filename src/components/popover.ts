@@ -1,4 +1,4 @@
-import { sunrise } from '../utils/index';
+import { sunrise } from '../utils';
 
 function supportsPopover() {
     return Object.prototype.hasOwnProperty.call(HTMLElement.prototype, "popover");
@@ -12,7 +12,7 @@ const popover = (popoverNode: HTMLElement, referenceNode: HTMLElement, direction
 
   if (!popoverSupported) {
     referenceNode.style.display = 'none';
-    return; 
+    return;
   }
   popoverNode.popover = "manual";
 
