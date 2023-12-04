@@ -2,6 +2,9 @@
   "name": "@sunrise/core",
   "version": "0.1.0",
   "description": "A lightweight popover/tooltip library with the use of Popover API",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/index.mjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.mts",
