@@ -13,8 +13,7 @@
     "lint": "npx tsc && npx eslint .",
     "build": "npx tsup src --format esm --dts",
     "clean": "rm -rf ./dist && rm -rf ./node_modules",
-    "release": "npm run build && npx changeset publish",
-    "preinstall": "npm run clean"
+    "release": "npm run build && npx changeset publish"
   },
   "author": "geophyzik",
   "license": "MIT",
