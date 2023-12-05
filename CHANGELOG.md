@@ -4,6 +4,12 @@
 
 ### Patch Changes
 
+- 10293ba: rename to fluffio, export computePosition
+
+## 0.1.2
+
+### Patch Changes
+
 - 5141396: Fix types in package.json
 
 ## 0.1.1
