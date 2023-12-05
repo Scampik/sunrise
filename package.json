@@ -1,5 +1,5 @@
 {
-  "name": "@sunrise/core",
+  "name": "@fluffio/core",
   "version": "0.1.0",
   "description": "A lightweight popover/tooltip library with the use of Popover API",
   "publishConfig": {
@@ -46,7 +46,7 @@
     "anchoring"
   ],
   "bugs": {
-    "url": "https://github.com/geophyzik/sunrise/issues"
+    "url": "https://github.com/geophyzik/fluffio/issues"
   },
-  "homepage": "https://github.com/geophyzik/sunrise#readme"
+  "homepage": "https://github.com/geophyzik/fluffio#readme"
 }
