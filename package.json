@@ -11,7 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx tsc && npx eslint .",
-    "build": "npm run clean && npx tsup src --format esm --dts",
+    "build": "npx tsup src --format esm --dts",
     "clean": "rm -rf ./dist && rm -rf ./node_modules",
     "release": "npm run build && npx changeset publish"
   },
