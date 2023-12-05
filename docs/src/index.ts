@@ -1,5 +1,5 @@
-import popover, { Direction, Side } from './components/popover';
-import { sunrise } from './utils';
+import sunrise from '@fluffio/core';
+import { Direction, Side } from '@fluffio/core/types';
 
 const directions: Direction[] = ['top', 'left', 'right', 'bottom'];
 const sides: Side[] = ['left', 'mid', 'right'];

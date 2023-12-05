@@ -13,7 +13,8 @@
     "lint": "npx tsc && npx eslint .",
     "build": "npm run clean && npx tsup src --format esm --dts",
     "clean": "rm -rf ./dist",
-    "release": "npm run build && npx changeset publish"
+    "release": "npm run build && npx changeset publish",
+    "prepublish": "npm run build"
   },
   "author": "geophyzik",
   "license": "MIT",
@@ -29,5 +30,23 @@
     "prettier": "3.1.0",
     "tsup": "8.0.1",
     "typescript": "^5.2.2"
-  }
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/geophyzik/sunrise.git"
+  },
+  "keywords": [
+    "popover",
+    "tooltip",
+    "dropdown",
+    "menu",
+    "anchoring"
+  ],
+  "bugs": {
+    "url": "https://github.com/geophyzik/sunrise/issues"
+  },
+  "homepage": "https://github.com/geophyzik/sunrise#readme"
 }
