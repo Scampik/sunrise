@@ -1,15 +1,17 @@
-# 🚀 Welcome to your new awesome project!
+## Fluffio
 
-This project has been created using **webpack-cli**, you can now run
+Fluffio is a small library that helps you create floating elements like tooltips based on the Popover API.
 
-```
-npm run build
-```
+## How To Install?
 
-or
-
-```
-yarn build
+```shell
+npm i @fluffio/core
 ```
 
-to bundle your application
+## How Its Work?:
+
+Anchor Positioning: Snap a floating element (such as a tooltip) to another element (such as a button), while keeping it as visible as possible and avoiding collisions.
+
+## License
+
+MIT

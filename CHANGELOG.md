@@ -1,4 +1,4 @@
-# @sunrise/core
+# @fluffio/core
 
 ## 0.1.0
 
