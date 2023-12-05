@@ -1,26 +1,24 @@
-import { sunrise } from './utils';
+import { computePosition } from './utils';
 import { Direction, Side } from './types';
 
 function supportsPopover() {
   return Object.prototype.hasOwnProperty.call(HTMLElement.prototype, 'popover');
 }
 
-const index = (
+export const fluffio = (
   popoverNode: HTMLElement,
   referenceNode: HTMLElement,
   direction: Direction = 'top',
   side: Side = 'mid',
 ) => {
-  const popoverSupported = supportsPopover();
-
-  if (!popoverSupported) {
+  if (!supportsPopover()) {
     referenceNode.style.display = 'none';
     return;
   }
-  popoverNode.popover = 'manual';
 
+  popoverNode.popover = 'manual';
   popoverNode.style.position = 'absolute';
-  sunrise(popoverNode, referenceNode, direction, side);
+  computePosition(popoverNode, referenceNode, direction, side);
 
   referenceNode.addEventListener('mouseover', () => {
     popoverNode.togglePopover();
@@ -31,4 +29,5 @@ const index = (
   });
 };
 
-export default index;
+export { computePosition };
+export type { Direction, Side };

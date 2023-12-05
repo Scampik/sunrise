@@ -1,13 +1,13 @@
 {
   "name": "@fluffio/core",
-  "version": "0.1.2",
+  "version": "0.1.1",
   "description": "A lightweight popover/tooltip library with the use of Popover API",
   "publishConfig": {
     "access": "public"
   },
   "main": "dist/index.mjs",
   "module": "dist/index.mjs",
-  "types": "dist/types.d.mts",
+  "types": "dist/index.d.mts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx tsc && npx eslint .",

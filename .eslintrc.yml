@@ -15,7 +15,8 @@ parserOptions:
 plugins:
   - '@typescript-eslint'
 rules: {
-  no-param-reassign: off
+  no-param-reassign: off,
+  import/prefer-default-export: off,
 }
 ignorePatterns:
   - /node_modules
