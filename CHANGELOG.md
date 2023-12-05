@@ -1,5 +1,11 @@
 # @fluffio/core
 
+## 0.1.2
+
+### Patch Changes
+
+- 5141396: Fix types in package.json
+
 ## 0.1.1
 
 ### Patch Changes
