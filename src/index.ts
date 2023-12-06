@@ -16,16 +16,16 @@ export const fluffio = (
     return;
   }
 
-  popoverNode.popover = 'auto';
+  popoverNode.popover = 'manual';
   popoverNode.style.position = 'absolute';
   computePosition(popoverNode, referenceNode, direction, side);
 
   referenceNode.addEventListener('mouseover', () => {
-    popoverNode.togglePopover();
+    popoverNode.style.display = 'block';
   });
 
   referenceNode.addEventListener('mouseout', () => {
-    popoverNode.togglePopover();
+    popoverNode.style.display = 'none';
   });
 };
 
