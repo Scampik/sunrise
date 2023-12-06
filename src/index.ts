@@ -16,7 +16,7 @@ export const fluffio = (
     return;
   }
 
-  popoverNode.popover = 'manual';
+  popoverNode.popover = 'auto';
   popoverNode.style.position = 'absolute';
   computePosition(popoverNode, referenceNode, direction, side);
 
