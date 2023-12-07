@@ -21,11 +21,11 @@ export const fluffio = (
   computePosition(popoverNode, referenceNode, direction, side);
 
   referenceNode.addEventListener('mouseover', () => {
-    popoverNode.togglePopover();
+    popoverNode.style.display = 'block';
   });
 
   referenceNode.addEventListener('mouseout', () => {
-    popoverNode.togglePopover();
+    popoverNode.style.display = 'none';
   });
 };
 
