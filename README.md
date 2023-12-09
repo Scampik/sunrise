@@ -1,16 +1,17 @@
 ## Fluffio
 
-Fluffio is a small library that helps you create floating elements like tooltips based on the Popover API.
+Meet Fluffio: a lightweight tooltip/popover library that utilizes the brand-new Popover API.
+
+> fluffio is currently under development. Please be aware that it has limited number of features and doesn't (yet) work in browsers that don't support Popover API
+
+Fluffio requires two things: an anchor (reference) node, and a popover (tooltip) node
+
 
 ## How To Install?
 
 ```shell
 npm i @fluffio/core
 ```
-
-## How Its Work?:
-
-Anchor Positioning: Snap a floating element (such as a tooltip) to another element (such as a button), while keeping it as visible as possible and avoiding collisions.
 
 ## License
 
