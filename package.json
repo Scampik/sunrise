@@ -1,6 +1,6 @@
 {
   "name": "@fluffio/core",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A lightweight popover/tooltip library with the use of Popover API",
   "publishConfig": {
     "access": "public"
