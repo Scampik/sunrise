@@ -1,4 +1,5 @@
 import { Direction, Side } from '../types';
+
 export const computeCorrectionCSS = (
   x: number,
   y: number,
