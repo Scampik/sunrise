@@ -25,7 +25,7 @@ const tooltip = () => {
     }
 
     node.addEventListener('click', () => {
-      computePosition(popoverNode, referenceNode, direction, side);
+      computePosition(popoverNode, referenceNode, { direction, side });
     });
   });
 
