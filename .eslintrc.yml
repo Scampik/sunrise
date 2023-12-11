@@ -6,6 +6,7 @@ extends:
   - plugin:@typescript-eslint/recommended
   - airbnb-base
   - airbnb-typescript/base
+  - prettier
 overrides: []
 parser: '@typescript-eslint/parser'
 parserOptions:
@@ -17,7 +18,8 @@ plugins:
 rules: {
   no-param-reassign: off,
   import/prefer-default-export: off,
-  arrow-body-style: off
+  arrow-body-style: off,
+  no-console: error
 }
 ignorePatterns:
   - /node_modules
