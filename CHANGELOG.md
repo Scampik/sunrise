@@ -1,5 +1,11 @@
 # @fluffio/core
 
+## 1.0.0
+
+### Major Changes
+
+- c18a352: Introduce params in fluffio API. Adds flip option.
+
 ## 0.1.4
 
 ### Patch Changes
