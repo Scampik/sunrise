@@ -5,6 +5,7 @@ export type FluffioParams = {
   direction?: Direction;
   side?: Side;
   flip?: boolean;
+  offset?: number;
 };
 
 export type Fluffio = (
@@ -17,4 +18,5 @@ export type ComputePositionParams = {
   direction?: Direction;
   side?: Side;
   silent?: boolean;
+  offset?: number;
 };
