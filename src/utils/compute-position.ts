@@ -3,7 +3,7 @@ import { computeCoordPlacement } from './compute-coord-placement';
 import { ComputePositionParams } from '../types';
 import { fluffioEventTarget } from '../event-target';
 import { EVENTS } from '../constants';
-import { offset as offsetCorrection } from '../middlewares/offset';
+import { offsetCorrection } from '../middlewares/offset';
 
 export const computePosition = (
   popoverNode: HTMLElement,

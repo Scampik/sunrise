@@ -1,6 +1,6 @@
 import { Direction } from '../types';
 
-export const offset = (
+export const offsetCorrection = (
   x: number,
   y: number,
   direction: Direction,
