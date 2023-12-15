@@ -17,6 +17,7 @@ export const flip = (
   referenceNode: HTMLElement,
   direction: Direction,
   side: Side,
+  offset: number,
 ) => {
   const popoverClone = clonePopover(popoverNode);
 
@@ -25,6 +26,7 @@ export const flip = (
       direction: newDirection,
       side: newSide,
       silent: true,
+      offset,
     });
   };
 
@@ -57,6 +59,7 @@ export const flip = (
       direction: detail.direction,
       side: detail.side,
       silent: true,
+      offset,
     });
 
     io.observe(popoverClone);

@@ -13,16 +13,17 @@ export const fluffio: Fluffio = (
     return;
   }
 
-  const { direction = 'bottom', side = 'mid', flip = true } = params;
+  const { direction = 'bottom', side = 'mid', flip = true, offset = 10 } = params;
 
   popoverNode.popover = 'manual';
   popoverNode.style.position = 'absolute';
-
+  popoverNode.style.margin = '0';
+  
   if (flip) {
-    flipFn(popoverNode, referenceNode, direction, side);
+    flipFn(popoverNode, referenceNode, direction, side, offset);
   }
-
-  computePosition(popoverNode, referenceNode, { direction, side });
+  
+  computePosition(popoverNode, referenceNode, { direction, side, offset });
 
   referenceNode.addEventListener('mouseover', () => {
     popoverNode.style.display = 'block';
